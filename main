@@ -4,12 +4,12 @@ import sympy
 for prime in sympy.primerange(1,10000000):
     dd_prime=True
 
-    for pos in range(len(str(prime))-1,-1,-1 ):
+    for pos in range(len(str(prime))-1,-1,-1):  #access digits one by one 
         inv_pos = len(str(prime)) - pos - 1     #flip position counting so the we can use 10^inv_pos for digit access
         prime_norm = prime - int(str(prime)[pos]) * (10 ** inv_pos) #kock the 'pos' digit to 0
 
-        #iterate the 'pos' digit [0,9]
-        for i in range(0,10):
+        
+        for i in range(0,10):       #iterate the 'pos' digit [0,9] 
             new_num = prime_norm + i * (10 ** inv_pos) #construct the new number and test if it is a prime 
             if new_num != prime and sympy.isprime(new_num):
                 dd_prime=False
